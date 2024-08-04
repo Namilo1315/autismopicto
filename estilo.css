@@ -150,14 +150,8 @@
             
             
         }
-       .inicio{
-        color:#921e1c;
-        font-weight:bold;
-        font-size: 70px;
-        margin-top: 30px;
-        margin-right: 160px;
-       
-         }
+      
+         
          .inicio1{
            margin-left: 160px;
         }
@@ -200,6 +194,7 @@
             display: flex;
             align-items: center;
             margin-top: 10px;
+            
         }
         
         #inicio .contenido header .contenido-header nav ul li a {
@@ -209,13 +204,11 @@
             font-weight: 600;
             transition: .5s;
             font-size: 22px;
-            
-
-
-        }
+            }
         
         #inicio .contenido header .contenido-header nav ul li a:hover {
             color:#1c3692;
+            
             font-weight: 800;
         
             
@@ -243,6 +236,7 @@
         
         #inicio .contenido header .contenido-header .seleccionado {
             color:#db2427;
+            
         }
         
         #inicio .contenido .presentacion {
@@ -311,71 +305,6 @@
 
 
 
-        #inicior{
-            background: none;
-            background-size: none;
-            
-            background-position:center;
-            height:13vh;
-
-      
-        } 
-        #inicior .contenido header {
-            background-color: rgb(255, 255, 255);
-            position: fixed;
-            width: 100%;
-            z-index: 1100;
-            top: 0;
-        }
-        
-        #inicior .contenido header .contenido-header {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 20px;
-        }
-        
-        
-        #inicior .contenido header .contenido-header nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        
-        #inicior .contenido header .contenido-header nav ul li a {
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            margin: 0 12px;
-            font-weight: 500;
-            transition: .5s;
-
-        }
-        
-        #inicior .contenido header .contenido-header nav ul li a:hover {
-            color:#1c3692;
-            font-weight: 800;
-            transform: scale(1.9, 1.9);
-            
-        }
-        
-        #inicior .contenido header .contenido-header .redes a {
-            text-decoration: none;
-            color:#000000;
-            display: inline-block;
-            margin-left: 10px;
-            transition: .5s;
-            font-weight: 1000;
-            
-        }
-        
-        #inicior .contenido header .contenido-header .redes a:hover {
-            color:#1c3692;
-            font-weight: 600;
-            transform: scale(1.6, 1.6);
-        }
           
 
         /* *********************/
@@ -621,7 +550,7 @@
     
          
         #servicios {
-            padding: 70px 15px;
+            padding: 50px 15px;
             text-align: center;
             background-color: #ffffff;
         }
@@ -710,7 +639,7 @@
 
     
         #contacto  {
-            padding: 70px 15px;
+            padding: 50px 15px;
             text-align: center;
             background-color: #ffffff;
             margin: auto;
@@ -736,7 +665,7 @@
 
     
     #contacto .contenedor-form {
-    max-width: 85%;
+    max-width: 100%;
     margin: auto;
     }
     
@@ -986,7 +915,7 @@
             
              /* seccion SERVICIOS */
               #nosotros {
-                padding: 50px 0;
+                padding: 40px 0;
               }
         #servicios {
             padding: 50px 0;
@@ -999,7 +928,7 @@
         }
         /* seccion CONTACTO */
         #contacto {
-            padding: 50px 0px;
+            padding: 40px 0px;
         }
         #contacto .contenedor-form .mitad {
             margin-bottom: 15px;
@@ -1088,7 +1017,7 @@
                     
                 /* seccion SOBRE MI */
                 #sobremi {
-                    padding: 50px 0;
+                    padding: 30px 0;
                     display: block;
                 }
                 #sobremi .contenedor-foto {
@@ -1112,7 +1041,7 @@
                 
                 /* seccion MIS SERVICIOS */
                 #servicios {
-                    padding: 40px 15px;
+                    padding: 30px 15px;
                 }
                 #servicios .fila {
                     display: block;
@@ -1136,7 +1065,7 @@
                 }
                 /* seccion CONTACTO */
                 #contacto {
-                    padding: 50px 0px;
+                    padding: 30px 0px;
                 }
                 #contacto .contenedor-form .mitad {
                     margin-bottom: 15px;
@@ -1153,7 +1082,7 @@
             
                      /* seccion MIS SERVICIOS */
             #servicios {
-                padding: 50px 15px;
+                padding: 30px 15px;
             }
             #servicios .fila {
                 display: block;
@@ -1237,15 +1166,18 @@
                 text-decoration-thickness: 5px;
             
             }
+           
             #servicios .titulo-seccion {
-                font-size: 27px;
+                font-size: 26px;
                 font-weight: 800;
                 text-transform: uppercase;
                 color: red;
                 text-decoration: underline;
                 text-decoration-color:#a8a8a8;
                 text-decoration-thickness: 5px;
+               
             }
+           
             #contacto .titulo-seccion {
                 font-size: 27px;
                 font-weight: 800;
@@ -1255,6 +1187,24 @@
                 text-decoration-color:#a8a8a8;
                 text-decoration-thickness: 5px;
             }
+            #contacto .titulo-formulario {
+                font-size: 19px;
+                color: #242424;
+                font-weight: 700;
+                text-align: center;
+                 
+                 
+            }
+            #inicio .contenido header .contenido-header nav ul li a {
+                text-decoration: none;
+                color: rgb(0, 0, 0);
+                margin: 0 12px;
+                font-weight: 600;
+                transition: .5s;
+                font-size: 16px;
+                
+            }
+          
  }
          
         
