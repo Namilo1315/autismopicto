@@ -868,6 +868,37 @@
 .telefonos{
     color: #1c3692;
 }
+.phrase-item {
+    display: flex;
+    align-items: center;
+    margin: 1px;
+}
+
+.phrase-item img {
+    max-width: 50px; /* Ajusta el tamaño según sea necesario */
+    margin-right: 1px;
+}
+
+.phrase-item span {
+    margin-right: 5px;
+}
+
+.remove-item {
+    cursor: pointer;
+    margin-left: 0px;
+    margin-bottom: 20px;
+    font-size: 1.0rem; /* Ajusta el tamaño de la X */
+    color: red;
+}
+/* Ajusta el tamaño de las imágenes */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.pictograma{
+    font-weight: 800px;
+}
 
         /* *********************/
         /* seccion R E S P O N S I V E */
@@ -1205,6 +1236,7 @@
                 
             }
           
+            
  }
          
         

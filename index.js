@@ -1,4 +1,6 @@
 //Función que me aplica el estilo a la opciòn seleccionada y quita la previamente seleccionada
+
+
 function seleccionar(link) {
     let opciones = document.querySelectorAll('#links  a');
     opciones[0].className = "";
@@ -72,7 +74,7 @@ function enviarWhatsApp() {
         carousel.style.transform = `translateX(${translateValue}%)`;
     }
 });
-
+/* CON PALABRA AL LADO DE LA IMG
 document.addEventListener('DOMContentLoaded', function() {
     function speak(text) {
         const synth = window.speechSynthesis;
@@ -100,6 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.getElementById('gracias').addEventListener('click', function() {
         speak('gracias');
+    });
+    document.getElementById('porfavor').addEventListener('click', function() {
+        speak('por favor');
     });
 
     document.getElementById('manzana').addEventListener('click', function() {
@@ -152,5 +157,168 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('text-input').value = '';
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const pictogramas = document.querySelectorAll('.pictograma');
+    const buttons = document.querySelectorAll('.img-carita');
+    const phraseContainer = document.getElementById('phrase-container');
+    const textInput = document.getElementById('text-input');
+    const speakButton = document.getElementById('speak-button');
+    const clearButton = document.getElementById('clear-button');
+    const reproducirFraseButton = document.getElementById('reproducir-frase');
+    const limpiarFraseButton = document.getElementById('limpiar-frase');
 
+    let phraseList = [];
+
+    pictogramas.forEach(pictograma => {
+        pictograma.addEventListener('click', () => {
+            const word = pictograma.dataset.word;
+            const src = pictograma.src;
+            addToPhraseContainer(word, src);
+            phraseList.push(word);
+        });
+    });
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const word = button.innerText.trim();
+            addToPhraseContainer(word);
+            phraseList.push(word);
+        });
+    });
+
+    function addToPhraseContainer(text, src) {
+        const item = document.createElement('div');
+        item.className = 'phrase-item';
+        if (src) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'phrase-img'; // Añadido para el tamaño
+            item.appendChild(img);
+        }
+        const span = document.createElement('span');
+        span.innerText = text;
+        item.appendChild(span);
+        const removeButton = document.createElement('span');
+        removeButton.innerHTML = '&times;';
+        removeButton.className = 'remove-item';
+        removeButton.addEventListener('click', () => {
+            item.remove();
+            // Remove the text from the list
+            const index = phraseList.indexOf(text);
+            if (index > -1) {
+                phraseList.splice(index, 1);
+            }
+        });
+        item.appendChild(removeButton);
+        phraseContainer.appendChild(item);
+    }
+
+    speakButton.addEventListener('click', () => {
+        const text = textInput.value;
+        if (text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+    });
+
+    clearButton.addEventListener('click', () => {
+        textInput.value = '';
+    });
+
+    reproducirFraseButton.addEventListener('click', () => {
+        // Join phrases from the list instead of the container
+        const phrase = phraseList.join(' ');
+        const utterance = new SpeechSynthesisUtterance(phrase);
+        speechSynthesis.speak(utterance);
+    });
+
+    limpiarFraseButton.addEventListener('click', () => {
+        phraseContainer.innerHTML = '';
+        phraseList = []; // Clear the list as well
+    });
+});
+*/
+document.addEventListener('DOMContentLoaded', () => {
+    const pictogramas = document.querySelectorAll('.pictograma');
+    const buttons = document.querySelectorAll('.img-carita');
+    const phraseContainer = document.getElementById('phrase-container');
+    const textInput = document.getElementById('text-input');
+    const speakButton = document.getElementById('speak-button');
+    const clearButton = document.getElementById('clear-button');
+    const reproducirFraseButton = document.getElementById('reproducir-frase');
+    const limpiarFraseButton = document.getElementById('limpiar-frase');
+
+    let phraseList = [];
+
+    pictogramas.forEach(pictograma => {
+        pictograma.addEventListener('click', () => {
+            const word = pictograma.dataset.word;
+            const src = pictograma.src;
+            addToPhraseContainer(src);
+            phraseList.push(word);
+        });
+    });
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const text = button.innerText.trim();
+            addToPhraseContainer(null, text);
+            phraseList.push(text);
+        });
+    });
+
+    function addToPhraseContainer(src, text) {
+        const item = document.createElement('div');
+        item.className = 'phrase-item';
+
+        if (src) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'phrase-img';
+            item.appendChild(img);
+        } else if (text) {
+            const span = document.createElement('span');
+            span.innerText = text;
+            item.appendChild(span);
+        }
+
+        const removeButton = document.createElement('span');
+        removeButton.innerHTML = '&times;';
+        removeButton.className = 'remove-item';
+        removeButton.addEventListener('click', () => {
+            item.remove();
+            // Remove the text from the list
+            const index = phraseList.indexOf(text);
+            if (index > -1) {
+                phraseList.splice(index, 1);
+            }
+        });
+        item.appendChild(removeButton);
+        phraseContainer.appendChild(item);
+    }
+
+    speakButton.addEventListener('click', () => {
+        const text = textInput.value;
+        if (text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+    });
+
+    clearButton.addEventListener('click', () => {
+        textInput.value = '';
+    });
+
+    reproducirFraseButton.addEventListener('click', () => {
+        // Join phrases from the list instead of the container
+        const phrase = phraseList.join(' ');
+        const utterance = new SpeechSynthesisUtterance(phrase);
+        speechSynthesis.speak(utterance);
+    });
+
+    limpiarFraseButton.addEventListener('click', () => {
+        phraseContainer.innerHTML = '';
+        phraseList = []; // Clear the list as well
+    });
+});
 
