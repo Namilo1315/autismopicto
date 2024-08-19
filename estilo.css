@@ -113,6 +113,14 @@
         .cartas :hover{
             background-color:#e7e7e7
         }
+        .pictograma{
+            
+            background-color: #ccfe95;
+            padding: 3px;
+            
+            border-radius:10px;
+            width: 110px;
+        }
         .volver{
             background-color: #f0f0f0;
             padding: 10px;
