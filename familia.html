@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pictograma Interactivo</title>
+    <link rel="icon" type="image/jpg" href="imagenes/carita feliz.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .btn-return { background-color: #ff2534; color: #000; }
+        .btn-want { background-color: #33db44; color: #000; }
+        .btn-dont-want { background-color: #c4c4c4; color: #000; }
+        .btn-like { background-color: #28accd; color: #000; }
+        .btn-dislike { background-color: #ffcc25; color: #000; }
+        .btn-thanks { background-color: #f7eb65; color: #000; }
+        .btn-please { background-color: #44dfd5; color: #000; }
+        .bg-blue-pastel { background-color: #5ebff4; color: #000; }
+        .bg-yellow-pastel { background-color: #f5d63c; color: #000; }
+        .bg-green-pastel { background-color: #43fb55; color: #000; }
+        .bg-orange-pastel { background-color: #f79845; color: #000; }
+        .bg-pink-pastel { background-color: #f4878f; color: #000; }
+        .bg-light-blue { background-color: #48b4cf; color: #000; }
+        .bg-light-green { background-color: #76e63f; color: #000; }
+        .bg-light-purple { background-color: #d67ce6; color: #000; }
+        .bg-yellow-light { background-color: #f7eb65; color: #000; }
+        .bg-turquoise { background-color: #44dfd5; color: #000; }
+        .bg-coral-light { background-color: #f6c170; color: #000; }
+        .bg-mint { background-color: #ff3c23db; color: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-1">
+        <div class="row">
+            <div class="col text-center">
+                <a href="./pictogramas.html"><button type="button" class="btn btn-return btn-lg m-2 img-carita" id="volver">VOLVER</button></a>
+                <img src="./imagenes/niña.png" alt="Manzana" class="pictograma" data-word="YO" width="60PX">
+                <button type="button" class="btn btn-want btn- m-2 img-carita" id="quiero">QUIERO</button>
+                <button type="button" class="btn btn-dont-want btn- m-2 img-carita" id="noquiero">NO QUIERO</button>
+                <button type="button" class="btn btn-like btn- m-2 img-carita" id="megusta">ME GUSTA</button>
+                <button type="button" class="btn btn-dislike btn- m-2 img-carita" id="nomegusta">NO ME GUSTA</button>
+                <button type="button" class="btn btn-thanks btn- m-2 img-carita" id="gracias">GRACIAS</button>
+                <button type="button" class="btn btn-please btn- m-2 img-carita" id="porfavor">POR FAVOR</button>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <h3 class="fw-bold bg-yellow-light py-2 fw-bold">ARMAMOS LA FRASE:</h3>
+            <div class="d-flex flex-wrap mb-3 border p-3" id="phrase-container"></div>
+            <button class="btn btn-like mb-2" id="reproducir-frase">Reproducir</button>
+            <button class="btn btn-return mb-2" id="limpiar-frase">Limpiar</button>
+        </div>
+    </section>
+
+    <div class="container mt-1">
+        <div class="row ">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/manzana.jpg" alt="Manzana" id="manzana" class="pictograma" data-word="manzana" width="50">
+                <p class="">MANZANA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/banana.jpg" alt="Banana" class="pictograma" data-word="banana" width="70">
+                <p class="">BANANA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/naranja.jpg" alt="Naranja" class="pictograma" data-word="naranja" width="50">
+                <p class="">NARANJA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/frutilla.jpg" alt="Frutilla" class="pictograma" data-word="frutilla" width="50">
+                <p>FRUTILLA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/sandia.jpg" alt="Sandia" class="pictograma" data-word="sandia" width="50">
+                <p>SANDIA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/mandarina.jpg" alt="Mandarina" class="pictograma" data-word="mandarina" width="50">
+                <p>MANDARINA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/uvas.jpg" alt="Uvas" class="pictograma" data-word="uva" width="50">
+                <p>UVAS</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/pera.jpg" alt="Pera" class="pictograma" data-word="pera" width="50">
+                <p>PERA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/manzana.jpg" alt="Manzana" class="pictograma" data-word="manzana" width="50">
+                <p class="">MANZANA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/banana.jpg" alt="Banana" class="pictograma" data-word="banana" width="70">
+                <p class="">BANANA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/naranja.jpg" alt="Naranja" class="pictograma" data-word="naranja" width="50">
+                <p class="">NARANJA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/frutilla.jpg" alt="Frutilla" class="pictograma" data-word="frutilla" width="50">
+                <p>FRUTILLA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/sandia.jpg" alt="Sandia" class="pictograma" data-word="sandia" width="50">
+                <p>SANDIA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/mandarina.jpg" alt="Mandarina" class="pictograma" data-word="mandarina" width="50">
+                <p>MANDARINA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/uvas.jpg" alt="Uvas" class="pictograma" data-word="uva" width="50">
+                <p>UVAS</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/pera.jpg" alt="Pera" class="pictograma" data-word="pera" width="50">
+                <p>PERA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/manzana.jpg" alt="Manzana" class="pictograma" data-word="manzana" width="50">
+                <p class="">MANZANA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/banana.jpg" alt="Banana" class="pictograma" data-word="banana" width="70">
+                <p class="">BANANA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/naranja.jpg" alt="Naranja" class="pictograma" data-word="naranja" width="50">
+                <p class="">NARANJA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/frutilla.jpg" alt="Frutilla" class="pictograma" data-word="frutilla" width="50">
+                <p>FRUTILLA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/sandia.jpg" alt="Sandia" class="pictograma" data-word="sandia" width="50">
+                <p>SANDIA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/mandarina.jpg" alt="Mandarina" class="pictograma" data-word="mandarina" width="50">
+                <p>MANDARINA</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/uvas.jpg" alt="Uvas" class="pictograma" data-word="uva" width="50">
+                <p>UVAS</p>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 text-center">
+                <img src="./imagenes/pera.jpg" alt="Pera" class="pictograma" data-word="pera" width="50">
+                <p>PERA</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <h3 class=" fw-bold bg-yellow-light py-2"> ¡Vamos a Practicar!</h3>
+            <div class="text-to-speech">
+                <textarea class="fw-bold " id="text-input" placeholder="Escribe algo aquí..."></textarea>
+                <div class="buttons">
+                    <button class="l1" id="speak-button">Reproducir</button>
+                    <button class="2" id="clear-button">Borrar</button>
+                </div>
+            </div>
+        </div>
+     </section>
+
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

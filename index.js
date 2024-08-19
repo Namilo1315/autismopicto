@@ -74,7 +74,7 @@ function enviarWhatsApp() {
         carousel.style.transform = `translateX(${translateValue}%)`;
     }
 });
-/* CON PALABRA AL LADO DE LA IMG
+
 document.addEventListener('DOMContentLoaded', function() {
     function speak(text) {
         const synth = window.speechSynthesis;
@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
    
  
 });
+/*
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded and parsed");
     

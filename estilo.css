@@ -42,7 +42,7 @@
             font-size: 16px;
         }
         .l1 {
-           background-color: green;
+           background-color: rgb(254, 44, 20);
         }
         button:hover {
             background-color: #0056b3;
@@ -83,17 +83,33 @@
             display: none;
         }
         h3{
-            background-color: orange;
-            border-radius: 10px;
+        
+           
              padding: 20px;
             
          }
         .link {
             text-decoration: none;
             color: black;
-            
         
          }
+         
+         .bg-blue-pastel { background-color: #5ebff4; color: #000; }
+         .bg-yellow-pastel { background-color: #f5d63c; color: #000; }
+         .bg-green-pastel { background-color: #43fb55; color: #000; }
+         .bg-orange-pastel { background-color: #f79845; color: #000; }
+         .bg-pink-pastel { background-color: #f4878f; color: #000; }
+         .bg-light-blue { background-color: #48b4cf; color: #000; }
+         .bg-light-green { background-color: #76e63f; color: #000; }
+         .bg-light-purple { background-color: #d67ce6; color: #000; }
+         .bg-yellow-light { background-color: #f7eb65; color: #000; }
+         .bg-turquoise { background-color: #44dfd5; color: #000; }
+         .bg-coral-light { background-color: #f6c170; color: #000; }
+         .bg-mint { background-color: #f84831db; color: #000; }
+         
+
+
+          
         .cartas :hover{
             background-color:#e7e7e7
         }
@@ -103,6 +119,7 @@
             border-radius: 15%;
           
         }
+        
         .gracias{
             display: none;
         }
