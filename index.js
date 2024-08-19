@@ -249,77 +249,76 @@ document.addEventListener('DOMContentLoaded', () => {
     const reproducirFraseButton = document.getElementById('reproducir-frase');
     const limpiarFraseButton = document.getElementById('limpiar-frase');
 
+    // Lista para guardar las palabras o imágenes seleccionadas
     let phraseList = [];
 
+    // Función para agregar pictogramas
     pictogramas.forEach(pictograma => {
         pictograma.addEventListener('click', () => {
             const word = pictograma.dataset.word;
             const src = pictograma.src;
-            addToPhraseContainer(src);
-            phraseList.push(word);
+            addToPhraseContainer(word, src);
         });
     });
 
+    // Función para agregar botones con texto
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            const text = button.innerText.trim();
-            addToPhraseContainer(null, text);
-            phraseList.push(text);
+            const word = button.innerText.trim();
+            addToPhraseContainer(word);
         });
     });
 
-    function addToPhraseContainer(src, text) {
+    // Función para agregar elementos al contenedor de frases
+    function addToPhraseContainer(word, src = null) {
         const item = document.createElement('div');
         item.className = 'phrase-item';
 
         if (src) {
             const img = document.createElement('img');
             img.src = src;
-            img.className = 'phrase-img';
+            img.className = 'phrase-img'; // Para agregar el estilo a la imagen
             item.appendChild(img);
-        } else if (text) {
-            const span = document.createElement('span');
-            span.innerText = text;
-            item.appendChild(span);
+        } else {
+            const text = document.createElement('span');
+            text.className = 'phrase-text';
+            text.innerText = word;
+            item.appendChild(text);
         }
 
+        // Botón para eliminar el elemento
         const removeButton = document.createElement('span');
         removeButton.innerHTML = '&times;';
         removeButton.className = 'remove-item';
+        item.appendChild(removeButton);
+
+        // Agregar el nuevo ítem al contenedor y a la lista
+        phraseContainer.appendChild(item);
+        phraseList.push({ word, src });
+
+        // Agregar funcionalidad de eliminación
         removeButton.addEventListener('click', () => {
             item.remove();
-            // Remove the text from the list
-            const index = phraseList.indexOf(text);
+            // Eliminar el elemento de phraseList
+            const index = phraseList.findIndex(phrase => phrase.word === word && phrase.src === src);
             if (index > -1) {
-                phraseList.splice(index, 1);
+                phraseList.splice(index, 1); // Eliminar de la lista
             }
         });
-        item.appendChild(removeButton);
-        phraseContainer.appendChild(item);
     }
 
-    speakButton.addEventListener('click', () => {
-        const text = textInput.value;
-        if (text) {
-            const utterance = new SpeechSynthesisUtterance(text);
+    // Funcionalidad para reproducir la frase
+    reproducirFraseButton.addEventListener('click', () => {
+        const phrase = phraseList.map(phrase => phrase.word).join(' ');
+        if (phrase) {
+            const utterance = new SpeechSynthesisUtterance(phrase);
             speechSynthesis.speak(utterance);
         }
     });
 
-    clearButton.addEventListener('click', () => {
-        textInput.value = '';
-    });
-
-    reproducirFraseButton.addEventListener('click', () => {
-        // Join phrases from the list instead of the container
-        const phrase = phraseList.join(' ');
-        const utterance = new SpeechSynthesisUtterance(phrase);
-        speechSynthesis.speak(utterance);
-    });
-
+    // Funcionalidad para limpiar la frase
     limpiarFraseButton.addEventListener('click', () => {
-        phraseContainer.innerHTML = '';
-        phraseList = []; // Clear the list as well
+        phraseContainer.innerHTML = ''; // Limpiar el contenedor de la frase
+        phraseList = []; // Limpiar la lista también
     });
 });
-
