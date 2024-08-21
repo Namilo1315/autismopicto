@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
    
  
 });
-/*
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded and parsed");
     
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Clear button clicked");
         document.getElementById('text-input').value = '';
     });
-});
+});/*
 document.addEventListener('DOMContentLoaded', () => {
     const pictogramas = document.querySelectorAll('.pictograma');
     const buttons = document.querySelectorAll('.img-carita');
