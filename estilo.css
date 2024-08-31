@@ -121,6 +121,7 @@
             
             border-radius:10px;
             width: 80px;
+           
         }
         .pictograma1{
             
@@ -130,7 +131,21 @@
             border-radius:10px;
             width: 80px;
         }
-       
+        .parrafos{
+            font-size: 11px;
+            text-align: center;
+        }
+        .parrafos1{
+            font-size: 11px;
+        }
+        .pictogramacarpeta{
+            
+            background-color: #ddf5c2;
+            padding: 3px;
+            
+            border-radius:10px;
+            width: 80px;
+        }
         
         h1, h2 {
             color: #333;
@@ -824,17 +839,7 @@
         }
     
     
-        /*#fondo{
-            
-            background: url("./imagenes/fondo.png");
-            background-size: cover;
-             margin-top: 15px;
-            background-position:center;
-            height:80vh;
-        }
-        .fondo2{
-            display: none;
-        }*/
+       
         /* *********************/
         /* seccion F O O T E R */
         /* *********************/
@@ -929,22 +934,27 @@
     display: flex;
     align-items: center;
     margin: 1px;
+   
 }
 
 .phrase-item img {
-    max-width: 50px; /* Ajusta el tamaño según sea necesario */
+    max-width: 70px; /* Ajusta el tamaño según sea necesario */
     margin-right: 1px;
+    border: 1px solid rgb(74, 74, 74);
+    border-radius: 10px;
+    padding: 1px;
 }
 
 .phrase-item span {
     margin-right: 5px;
+    
 }
 
 .remove-item {
     cursor: pointer;
     margin-left: 0px;
-    margin-bottom: 20px;
-    font-size: 1.0rem; /* Ajusta el tamaño de la X */
+    margin-bottom: 50px;
+    font-size: 1.3rem; /* Ajusta el tamaño de la X */
     color: red;
 }
 
@@ -1286,7 +1296,40 @@
                 
             }
           
+            .pictograma{
             
+                background-color: #ddf5c2;
+                padding: 3px;
+                
+                border-radius:10px;
+                width: 60px;
+            }
+            .pictograma1{
+                
+                background-color: #f6bebe;
+                padding: 3px;
+                
+                border-radius:10px;
+                width: 50px;
+            }
+            .pictogramacarpeta{
+            
+                background-color: #ddf5c2;
+                padding: 3px;
+                
+                border-radius:10px;
+                width: 60px;
+            }
+            .parrafos{
+                font-size: 10px;
+            }
+            .phrase-item img {
+                max-width: 50px; /* Ajusta el tamaño según sea necesario */
+                margin-right: 1px;
+                border: 1px solid rgb(74, 74, 74);
+                border-radius: 10px;
+                padding: 1px;
+            }
  }
          
         
