@@ -241,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 */
 document.addEventListener('DOMContentLoaded', () => {
     const pictogramas = document.querySelectorAll('.pictograma');
+    const pictograma1 = document.querySelectorAll('.pictograma1');
     const buttons = document.querySelectorAll('.img-carita');
     const phraseContainer = document.getElementById('phrase-container');
     const textInput = document.getElementById('text-input');
@@ -257,6 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
         pictograma.addEventListener('click', () => {
             const word = pictograma.dataset.word;
             const src = pictograma.src;
+            addToPhraseContainer(word, src);
+        });
+    });
+    pictograma1.forEach(pictograma1 => {
+        pictograma1.addEventListener('click', () => {
+            const word = pictograma1.dataset.word;
+            const src = pictograma1.src;
             addToPhraseContainer(word, src);
         });
     });
@@ -322,3 +330,206 @@ document.addEventListener('DOMContentLoaded', () => {
         phraseList = []; // Limpiar la lista también
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const pictogramGrid = document.getElementById('pictogramGrid');
+    const searchInput = document.getElementById('searchInput');
+    const selectedPictograms = document.getElementById('selectedPictograms');
+    const reproducirFraseButton = document.getElementById('reproducir-frase');
+    const limpiarFraseButton = document.getElementById('limpiar-frase');
+
+    let phraseList = [];
+    let pictograms = [];
+
+    // Cargar pictogramas por categoría
+    function loadPictograms(category) {
+        fetch(`pictogramas_${category}.json`)
+            .then(response => response.json())
+            .then(data => {
+                pictograms = data;
+                renderPictograms(pictograms);
+            })
+            .catch(error => {
+                console.error('Error al cargar los pictogramas:', error);
+            });
+    }
+
+    // Renderizar pictogramas en la interfaz
+    function renderPictograms(pictograms) {
+        pictogramGrid.innerHTML = '';
+        pictograms.forEach(pictogram => {
+            const div = document.createElement('div');
+            div.className = 'col-lg-2 col-md-3 col-sm-4 col-xs-6 text-center';
+            div.innerHTML = `
+                <img src="${pictogram.src}" alt="${pictogram.word}" class="pictograma" data-word="${pictogram.word}" width="100">
+                <p class="fw-bold">${pictogram.word.toUpperCase()}</p>
+            `;
+            pictogramGrid.appendChild(div);
+        });
+    }
+
+    // Filtrar pictogramas según la búsqueda
+    function filterPictograms() {
+        const query = searchInput.value.toLowerCase();
+        const pictogramas = document.querySelectorAll('.pictograma');
+        pictogramas.forEach(pictograma => {
+            const word = pictograma.dataset.word.toLowerCase();
+            if (word.includes(query)) {
+                pictograma.parentElement.style.display = 'block';
+            } else {
+                pictograma.parentElement.style.display = 'none';
+            }
+        });
+    }
+
+    // Añadir pictogramas al contenedor de frases
+    function addToPhraseContainer(word, src = null) {
+        const item = document.createElement('div');
+        item.className = 'phrase-item d-flex align-items-center m-2';
+        
+        if (src) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'phrase-img';
+            img.width = 100; // Ajustar tamaño
+            item.appendChild(img);
+        } else {
+            const text = document.createElement('span');
+            text.className = 'phrase-text';
+            text.innerText = word;
+            item.appendChild(text);
+        }
+
+        const removeButton = document.createElement('span');
+        removeButton.innerHTML = '&times;';
+        removeButton.className = 'remove-item btn btn-danger btn-sm ml-2';
+        item.appendChild(removeButton);
+
+        selectedPictograms.appendChild(item);
+        phraseList.push({ word, src });
+
+        removeButton.addEventListener('click', () => {
+            item.remove();
+            const index = phraseList.findIndex(phrase => phrase.word === word && phrase.src === src);
+            if (index > -1) {
+                phraseList.splice(index, 1);
+            }
+        });
+    }
+
+    // Manejar clic en pictogramas
+    pictogramGrid.addEventListener('click', (event) => {
+        if (event.target.classList.contains('pictograma')) {
+            const word = event.target.dataset.word;
+            const src = event.target.src;
+            addToPhraseContainer(word, src);
+        }
+    });
+
+    // Manejar filtrado
+    searchInput.addEventListener('input', filterPictograms);
+
+    // Reproducir frase
+    reproducirFraseButton.addEventListener('click', () => {
+        const phrase = phraseList.map(phrase => phrase.word).join(' ');
+        if (phrase) {
+            const utterance = new SpeechSynthesisUtterance(phrase);
+            speechSynthesis.speak(utterance);
+        }
+    });
+
+    // Limpiar frase
+    limpiarFraseButton.addEventListener('click', () => {
+        selectedPictograms.innerHTML = '';
+        phraseList = [];
+    });
+
+    // Manejar clic en botones de categoría
+    document.querySelectorAll('.category-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            loadPictograms(category);
+        });
+    });
+});
+
+
+// Manejo de selección de pictogramas de colores y agregarlos al contenedor de frases
+document.querySelectorAll('.color-pictograma').forEach(function(pictograma) {
+  pictograma.addEventListener('click', function() {
+    // Obtener la palabra del pictograma seleccionado
+    var word = pictograma.getAttribute('data-word');
+    
+    // Crear un nuevo elemento para agregar la imagen al contenedor de frases
+    var newPictogram = document.createElement('div');
+    newPictogram.classList.add('pictograma-selected');
+    
+    // Crear un nuevo elemento de imagen
+    var imgElement = document.createElement('img');
+    imgElement.src = pictograma.src;
+    imgElement.alt = pictograma.alt;
+    imgElement.width = 80; // Mantener el mismo tamaño
+    
+    // Agregar la imagen al nuevo elemento
+    newPictogram.appendChild(imgElement);
+    
+    // Agregar el nuevo pictograma (imagen) al contenedor de frases
+    document.getElementById('phrase-container').appendChild(newPictogram);
+    
+    // Reproducir el nombre del color seleccionado usando SpeechSynthesis
+    var utterance = new SpeechSynthesisUtterance(word);
+    speechSynthesis.speak(utterance);
+    
+    // Cerrar el modal
+    var modal = bootstrap.Modal.getInstance(document.getElementById('colorModal'));
+    modal.hide();
+  });
+});
+
+// Abrir modal de colores cuando se hace clic en la imagen de "Colores"
+document.getElementById('colores-link').addEventListener('click', function(event) {
+  event.preventDefault(); // Evitar comportamiento predeterminado del enlace
+  var colorModal = new bootstrap.Modal(document.getElementById('colorModal'));
+  colorModal.show(); // Mostrar el modal de colores
+});
+   
+
+// Manejo de selección de pictogramas de emociones y agregarlos al contenedor de frases
+document.querySelectorAll('.emocion-pictograma').forEach(function(pictograma) {
+    pictograma.addEventListener('click', function() {
+      // Obtener la palabra del pictograma seleccionado
+      var word = pictograma.getAttribute('data-word');
+      
+      // Crear un nuevo elemento para agregar la imagen al contenedor de frases
+      var newPictogram = document.createElement('div');
+      newPictogram.classList.add('pictograma-selected');
+      
+      // Crear un nuevo elemento de imagen
+      var imgElement = document.createElement('img');
+      imgElement.src = pictograma.src;
+      imgElement.alt = pictograma.alt;
+      imgElement.width = 80; // Mantener el mismo tamaño
+      
+      // Agregar la imagen al nuevo elemento
+      newPictogram.appendChild(imgElement);
+      
+      // Agregar el nuevo pictograma (imagen) al contenedor de frases
+      document.getElementById('phrase-container').appendChild(newPictogram);
+      
+      // Reproducir el nombre de la emoción seleccionada usando SpeechSynthesis
+      var utterance = new SpeechSynthesisUtterance(word);
+      speechSynthesis.speak(utterance);
+      
+      // Cerrar el modal
+      var modal = bootstrap.Modal.getInstance(document.getElementById('emocionesModal'));
+      modal.hide();
+    });
+  });
+  
+  // Abrir modal de emociones cuando se hace clic en la imagen de "Emociones"
+  document.getElementById('emociones-link').addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar comportamiento predeterminado del enlace
+    var emocionesModal = new bootstrap.Modal(document.getElementById('emocionesModal'));
+    emocionesModal.show(); // Mostrar el modal de emociones
+  });
